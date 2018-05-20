@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { userActions } from '../_actions';
+import TableComponent from './TableComponent'
 
 class HomePage extends React.Component {
     componentDidMount() {
@@ -17,23 +17,19 @@ class HomePage extends React.Component {
         const { user, users } = this.props;
         return (
             <div className="col-md-6 col-md-offset-3">
-                <h1>Hi {user.firstName}!</h1>
-                <p>You're logged in with React & JWT!!</p>
-                <h3>Users from secure api end point:</h3>
+                <nav className="navbar navbar-light bg-light">
+                    <span className="navbar-text pull-left">
+                      Hi {user.firstName}! You're logged in!!
+                    </span>
+                    <p>
+                    <Link className="pull-right" to="/login">Logout</Link>
+                </p>
                 {users.loading && <em>Loading users...</em>}
                 {users.error && <span className="text-danger">ERROR: {users.error}</span>}
-                {users.items &&
-                    <ul>
-                        {users.items.map((user, index) =>
-                            <li key={user.id}>
-                                {user.firstName + ' ' + user.lastName}
-                            </li>
-                        )}
-                    </ul>
-                }
-                <p>
-                    <Link to="/login">Logout</Link>
-                </p>
+                </nav>
+                
+                <TableComponent />
+                 
             </div>
         );
     }
