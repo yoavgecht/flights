@@ -14,7 +14,7 @@ class AddFlight extends Component {
     render() {
     return (
         <div>
-            ADD FLIGHT     
+            ADD FLIGHT COMPONENT - FORM WITH AUTH THAT WILL ADD FLIGHT TO THE ARRAY     
         </div>
       )
     }
